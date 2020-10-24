@@ -37,6 +37,9 @@
             padding: 3rem 1.5rem;
             text-align: center;
         }
+        table {
+            text-transform: uppercase;
+        }
     </style>
 </head>
 <body>
@@ -56,6 +59,9 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{route('clientes')}}">Clientes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('clientes')}}">Pedidos</a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0" action="{{route('clientes.busca')}}" method="post">

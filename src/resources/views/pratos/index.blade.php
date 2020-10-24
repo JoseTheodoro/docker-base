@@ -19,8 +19,8 @@
         <tbody>
         @foreach($pratos as $p)
         <tr>
-            <td>{{$p->nome}}</td>
-            <td>{{$p->preco}}</td>
+            <td>{{$p->name}}</td>
+            <td>{{$p->price}}</td>
             <td>
                 <a href="{{route('pratos.edit', $p->id)}}">Editar</a>
             </td>

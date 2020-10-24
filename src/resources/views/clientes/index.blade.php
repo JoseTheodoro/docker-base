@@ -19,8 +19,8 @@
         <tbody>
         @foreach($clientes as $c)
         <tr>
-            <td>{{$c->nome}}</td>
-            <td>{{$c->telefone}}</td>
+            <td>{{$c->name}}</td>
+            <td>{{$c->phone}}</td>
             <td>
                 <a href="{{route('clientes.edit', $c->id)}}">Editar</a>
             </td>

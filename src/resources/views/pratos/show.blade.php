@@ -2,18 +2,18 @@
 
     @section('content')
 
-    <h1>{{$prato->nome}} </h1>
+    <h1>{{$prato->name}} </h1>
 
     <hr>
     <form action="{{route('pratos.update', $prato->id)}}" method="post">
         {{@csrf_field()}}
         <div class="form-group">
             <label for="nome">Nome</label>
-            <input type="text" class="form-control" id="nome" name="nome" autocomplete="off" value="{{$prato->nome}}">
+            <input type="text" class="form-control" id="nome" name="name" autocomplete="off" value="{{$prato->name}}">
         </div>
         <div class="form-group">
             <label for="preco">Preço</label>
-            <input type="text" class="form-control" id="preco" name="preco" autocomplete="off" value="{{$prato->preco}}">
+            <input type="text" class="form-control" id="preco" name="price" autocomplete="off" value="{{$prato->price}}">
         </div>
 
         <button type="submit" class="btn btn-primary">Salvar</button>

@@ -1,0 +1,45 @@
+<?php
+
+namespace App\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class StoreClienteRequest extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        return [
+            'name' => 'required',
+            'phone' => 'required|numeric',
+            'address' => 'required',
+            'addtional' => 'nullable',
+            'observacao' => 'nullable',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'nome é obrigatório',
+            'phone.required' => 'telefone é obrigatório',
+            'phone.numeric' => 'telefone deve ser apenas numeros',
+            'phone.size' => 'telefone deve conter 11 numeros',
+            'address.required' => 'endereço é obrigatório'
+        ];
+    }
+}

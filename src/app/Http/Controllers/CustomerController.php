@@ -4,15 +4,16 @@
 namespace App\Http\Controllers;
 
 
-use App\Models\Cliente;
+use App\Http\Requests\StoreClienteRequest;
+use App\Models\Customer;
 use Illuminate\Http\Request;
 
-class ClientesController extends Controller
+class CustomerController extends Controller
 {
 
     public function index()
     {
-        $clientes = Cliente::all();
+        $clientes = Customer::all();
         return view('clientes.index', compact('clientes'));
     }
 
@@ -21,22 +22,22 @@ class ClientesController extends Controller
         return view('clientes.cadastro');
     }
 
-    public function store(Request $request)
+    public function store(StoreClienteRequest $request)
     {
-        Cliente::create($request->all());
+        $cliente = Customer::create($request->all());
 
-        return redirect()->route('clientes');
+        return redirect()->route('clientes.edit', $cliente->id);
     }
 
     public function show($id)
     {
-        $cliente = Cliente::where('id', $id)->orWhere('telefone', $id)->first();
+        $cliente = Customer::where('id', $id)->orWhere('phone', $id)->first();
         return view('clientes.show', compact('cliente'));
     }
 
     public function update(Request $request, $id)
     {
-        $cliente = Cliente::where('id', $id)->orWhere('telefone', $id)->first();
+        $cliente = Customer::where('id', $id)->orWhere('phone', $id)->first();
 
         $cliente->update($request->all());
         return view('clientes.show', compact('cliente'));
@@ -45,7 +46,7 @@ class ClientesController extends Controller
     public function busca(Request $request)
     {
         $id = $request->get('id');
-        $cliente = Cliente::where('telefone', $id)->first();
+        $cliente = Customer::where('phone', $id)->first();
         if(null == $cliente) {
             return redirect('clientes');
         }
